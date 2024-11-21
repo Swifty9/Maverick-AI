@@ -17,7 +17,7 @@ export function Footer() {
                         </svg>
                         <div className="text-[#60A5FA]">
                             <Link to="about"><h2 className="pb-2 hover:text-white">About Us</h2></Link>
-                            <Link to="#"><h2 className="hover:text-white">Contact Us</h2></Link>
+                            <Link to="/contact"><h2 className="hover:text-white">Contact Us</h2></Link>
                         </div>
                     </div>
 
@@ -44,8 +44,8 @@ export function Footer() {
                             </g>
                         </svg>
                         <div className="text-[#A657F7]">
-                            <Link to="#"><h2 className="pb-2 hover:text-white">Privacy Policy</h2></Link>
-                            <Link to="#"><h2 className="hover:text-white">Terms of Service</h2></Link>
+                            <Link to="/privacy-policy"><h2 className="pb-2 hover:text-white">Privacy Policy</h2></Link>
+                            <Link to="/terms-of-service"><h2 className="hover:text-white">Terms of Service</h2></Link>
                         </div>
                     </div>
                 </div>

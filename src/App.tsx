@@ -10,11 +10,14 @@ import { Contributors } from './pages/Contributors';
 import { Mission } from './pages/mission';
 import { Team } from './pages/team';
 import { Global } from './pages/global';
-
+import {PrivacyPolicy} from "./pages/privacy-policy.tsx";
+import {Contact} from "./pages/contact.tsx";
+import {TermsOfService} from "./pages/terms-of-service.tsx";
 import { NotFound } from './pages/404';
 
 import { LogIn } from './pages/logIn';
-import { SignUp } from './pages/signUp'; // Ensure correct import
+import { SignUp } from './pages/signUp';
+
 
 
 function App() {
@@ -30,6 +33,9 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/global" element={<Global />} />
           <Route path="/about" element={<About />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} /> {/* Ensure correct path */}
           <Route path="/contributors" element={<Contributors />} />
