@@ -5,7 +5,7 @@
 
 import { Database, Shield, FileText } from 'lucide-react';
 
-export const sectionData = [
+export const privacyPolicyData = [
     {
         id: 'dataCollection',
         title: 'Data Collection',

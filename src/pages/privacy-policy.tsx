@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { sectionData } from '../components/sectionData';
+import { privacyPolicyData } from '../data/privacyPolicyData.tsx';
 import { ChevronDown } from 'lucide-react'; // Für den Pfeil
 
 export function PrivacyPolicy() {
     const [visibility, setVisibility] = useState<{ [key: string]: boolean }>(
-        Object.fromEntries(sectionData.map((section) => [section.id, false]))
+        Object.fromEntries(privacyPolicyData.map((section) => [section.id, false]))
     );
 
     const toggleVisibility = (sectionId: string) => {
@@ -31,7 +31,7 @@ export function PrivacyPolicy() {
                 </p>
             </div>
 
-            {sectionData.map((section) => (
+            {privacyPolicyData.map((section) => (
                 <motion.div
                     key={section.id}
                     initial="hidden"
