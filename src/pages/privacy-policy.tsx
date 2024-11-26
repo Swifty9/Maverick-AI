@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { privacyPolicyData } from '../data/privacyPolicyData.tsx';
-import { ChevronDown } from 'lucide-react'; // Für den Pfeil
+import { ChevronDown } from 'lucide-react';
+import {Footer} from "../components/Footer.tsx"; // Für den Pfeil
 
 export function PrivacyPolicy() {
     const [visibility, setVisibility] = useState<{ [key: string]: boolean }>(
@@ -65,6 +66,7 @@ export function PrivacyPolicy() {
                     )}
                 </motion.div>
             ))}
+            <Footer/>
         </div>
     );
 }
