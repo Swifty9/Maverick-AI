@@ -29,7 +29,7 @@ export function Footer() {
                         </svg>
                         <div className="text-[#827EF8]">
                             <Link to="contributors"><h2 className="pb-2 hover:text-white">Contributors</h2></Link>
-                            <Link to="https://github.com/Swifty9/Maverick-AI"><h2 className="hover:text-white">Contact Us</h2></Link>
+                            <Link to="https://github.com/Swifty9/Maverick-AI"><h2 className="hover:text-white">GitHub</h2></Link>
                         </div>
                     </div>
 
