@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ContactForm } from "../components/ContactForm";
+import {Footer} from "../components/Footer.tsx";
 
 export function Contact() {
     const containerVariants = {
@@ -27,6 +28,8 @@ export function Contact() {
             >
                 <ContactForm />
             </motion.div>
+            <Footer/>
         </main>
+
     );
 }
