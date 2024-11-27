@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ScrollSection } from "../components/ScrollSection";
 import { Footer } from "../components/Footer";
 import { Shield, Zap, Users } from "lucide-react";
+import {Link} from "react-router-dom";
 
 export function About() {
   return (
@@ -185,9 +186,11 @@ export function About() {
           <p className="text-xl text-neutral-400 mb-8">
             Join the growing number of platforms using Maverick AI to create safer online communities.
           </p>
-          <button className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-            Contact Us
-          </button>
+          <Link to="/contact">
+            <button className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+              Contact Us
+            </button>
+          </Link>
         </div>
       </ScrollSection>
 
