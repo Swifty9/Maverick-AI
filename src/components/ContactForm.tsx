@@ -15,6 +15,7 @@ export function ContactForm() {
                         id="firstName"
                         name="firstName"
                         autoComplete="none"
+                        placeholder="First Name"
                         required
                         className="w-full bg-white/5 border border-gray-700 rounded-lg p-3 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-transparent focus:outline-none focus:ring-2"
                     />
@@ -30,6 +31,7 @@ export function ContactForm() {
                         id="lastName"
                         name="lastName"
                         autoComplete="none"
+                        placeholder="Last Name"
                         required
                         className="w-full bg-white/5 border border-gray-700 rounded-lg p-3 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-transparent focus:outline-none focus:ring-2 "
                     />
@@ -45,6 +47,7 @@ export function ContactForm() {
                     type="email"
                     id="email"
                     name="email"
+                    placeholder="you@example.com"
                     autoComplete="none"
                     required
                     className="w-full bg-white/5 border border-gray-700 rounded-lg p-3 text-white placeholder-gray-400 focus:ring-blue-500 focus:border-transparent focus:outline-none focus:ring-2  "
@@ -54,6 +57,7 @@ export function ContactForm() {
             <TextArea
                 label="How can we help you?"
                 name="message"
+                placeholder="Type your message here..."
                 required
                 className="text-white"
             />
@@ -74,7 +78,9 @@ export function ContactForm() {
 
 
             <div>
-                <Button type="submit">Submit</Button>
+                <Button type="submit"
+                className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 rounded-lg transition-colors"
+                >Submit</Button>
             </div>
         </div>
     );
