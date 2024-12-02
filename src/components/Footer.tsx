@@ -28,8 +28,8 @@ export function Footer() {
         { label: "Community", href: "/community" },
         { label: "Contact", href: "/contact" },
         { label: "Support", href: "/support" },
-        { label: "Privacy", href: "/privacy" },
-        { label: "Terms", href: "/terms" }
+        { label: "Privacy", href: "/privacy-policy" },
+        { label: "Terms", href: "/terms-of-service" }
       ]
     },
     {

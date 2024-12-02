@@ -9,6 +9,9 @@ import { Pricing } from './pages/pricing';
 import { Mission } from './pages/mission';
 import { Team } from './pages/team';
 import { Global } from './pages/global';
+import {PrivacyPolicy} from "./pages/privacy-policy.tsx";
+import {Contact} from "./pages/contact.tsx";
+import {TermsOfService} from "./pages/terms-of-service.tsx";
 import { NotFound } from './pages/404';
 
 import { LogIn } from './pages/logIn';
@@ -23,15 +26,15 @@ function App() {
         {/* Fluid Gradient Background */}
         <div className="fixed inset-0 -z-10">
           {/* Primary gradient */}
-          <div 
+          <div
             className="absolute top-1/2 left-1/2 w-[1000px] h-[1000px] rounded-full fluid-gradient"
             style={{
               background: 'radial-gradient(circle at center, rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0.05))',
             }}
           />
-          
+
           {/* Secondary gradient */}
-          <div 
+          <div
             className="absolute top-1/2 left-1/2 w-[800px] h-[800px] rounded-full fluid-gradient"
             style={{
               background: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.05))',
@@ -39,9 +42,9 @@ function App() {
               animationDuration: '20s'
             }}
           />
-          
+
           {/* Accent gradient */}
-          <div 
+          <div
             className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full fluid-gradient"
             style={{
               background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05))',
@@ -63,6 +66,9 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/global" element={<Global />} />
           <Route path="/about" element={<About />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} /> {/* Ensure correct path */}
           <Route path="/moderate-text" element={<ModerateText />} />
