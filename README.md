@@ -274,10 +274,10 @@ graph TB
 
 ---
 ## Contributing
-
+ 
 
 Contributions are welcome! Please feel free to submit a Pull Request. For more details, refer to the [CONTRIBUTING.md](https://github.com/Swifty9/Maverick-AI/blob/main/CONTRIBUTING.md) file.
 
 ## License
-
+ 
 #### MIT License - feel free to use this project for your own purposes.  
