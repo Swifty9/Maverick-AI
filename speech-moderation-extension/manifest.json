@@ -6,10 +6,13 @@
   "permissions": [
     "activeTab",
     "scripting",
-    "tabs"
+    "tabs",
+    "storage",
+    "contextMenus"
   ],
   "host_permissions": [
-    "https://meet.google.com/*"
+    "https://meet.google.com/*",
+    "https://api-inference.huggingface.co/*"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -21,5 +24,8 @@
       "css": ["style.css"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }
