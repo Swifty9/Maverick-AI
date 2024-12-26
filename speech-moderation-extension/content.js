@@ -29,8 +29,135 @@ function handleRecognitionResult(event) {
     const result = results[i];
     const text = result[0].transcript;
     const isFinal = result.isFinal;
+    
     showMessage(text, isFinal);
+    
+    // Send final text for moderation
+    if (isFinal) {
+      moderateTranscript(text);
+    }
   }
+}
+
+async function moderateTranscript(text) {
+  try {
+    // Send message to background script for moderation
+    const result = await chrome.runtime.sendMessage({
+      action: 'moderateText',
+      text: text
+    });
+
+    if (!result) {
+      console.error('No moderation result received');
+      return;
+    }
+
+    // Remove any existing moderation result for this text
+    removeExistingModeration(text);
+
+    // Display moderation results
+    showModerationResult(text, result);
+  } catch (error) {
+    console.error('Failed to moderate text:', error);
+  }
+}
+
+function removeExistingModeration(text) {
+  const container = getOrCreateContainer();
+  const contentEl = container.querySelector('#speech-content');
+  const messages = contentEl.querySelectorAll('.message');
+  
+  messages.forEach(msg => {
+    const msgText = msg.querySelector('.message-content')?.textContent?.trim();
+    if (msgText === text && msg.classList.contains('moderation-result')) {
+      msg.remove();
+    }
+  });
+}
+
+function showModerationResult(text, moderationResult) {
+  if (!moderationResult || typeof moderationResult !== 'object') {
+    console.error('Invalid moderation result:', moderationResult);
+    return;
+  }
+
+  const container = getOrCreateContainer();
+  const contentEl = container.querySelector('#speech-content');
+  
+  const msgEl = document.createElement('div');
+  msgEl.className = 'message moderation-result';
+  
+  // Default values if properties are undefined
+  const toxicity = moderationResult.overallToxicity || 0;
+  const flags = moderationResult.flags || [];
+  
+  // Check for harmful content patterns
+  const textLower = text.toLowerCase();
+  const selfHarmPatterns = ['kill myself', 'suicide', 'self harm', 'end my life'];
+  const threatPatterns = ['kill', 'murder', 'hurt', 'harm'];
+  
+  const hasSelfHarm = selfHarmPatterns.some(pattern => textLower.includes(pattern));
+  const hasThreats = threatPatterns.some(pattern => textLower.includes(pattern));
+  
+  // Override neutral flags if harmful content is detected
+  if (hasSelfHarm || hasThreats) {
+    flags.push({
+      type: hasSelfHarm ? 'self_harm' : 'threat',
+      reason: hasSelfHarm ? 'Content contains self-harm references' : 'Content contains threats',
+      confidence: 0.95,
+      severity: 'high'
+    });
+  }
+
+  const toxicityLevel = getToxicityLevel(toxicity);
+  const toxicityColor = getToxicityColorClass(toxicity);
+  
+  const flagsHtml = flags
+    .map(flag => {
+      if (!flag || !flag.type) return '';
+      return `
+        <div class="flag ${flag.severity || 'low'}">
+          <span class="flag-type">${(flag.type || 'unknown').replace(/_/g, ' ')}</span>
+          ${flag.reason ? `<span class="flag-reason">${flag.reason}</span>` : ''}
+          <span class="flag-confidence">${Math.round((flag.confidence || 0) * 100)}%</span>
+        </div>
+      `;
+    })
+    .filter(html => html !== '') // Remove empty strings
+    .join('');
+
+  msgEl.innerHTML = `
+    <div class="message-content">
+      <div class="moderated-text ${toxicityColor}">
+        ${text}
+      </div>
+      <div class="moderation-flags">
+        ${flagsHtml || '<div class="flag low"><span class="flag-type">neutral</span></div>'}
+      </div>
+      <div class="message-meta">
+        <span class="message-status">Moderated</span>
+        <span class="toxicity-level ${toxicityColor}">
+          ${toxicityLevel} (${Math.round(toxicity * 100)}%)
+        </span>
+        <span class="timestamp">${new Date().toLocaleTimeString()}</span>
+      </div>
+    </div>
+  `;
+  
+  contentEl.appendChild(msgEl);
+  contentEl.scrollTop = contentEl.scrollHeight;
+}
+
+function getToxicityLevel(toxicity) {
+  if (toxicity < 0.3) return 'Safe';
+  if (toxicity < 0.7) return 'Moderate';
+  return 'High Risk';
+}
+
+function getToxicityColorClass(toxicity) {
+  if (toxicity < 0.3) return 'low-toxicity';
+  if (toxicity < 0.7) return 'medium-toxicity';
+  return 'high-toxicity';
 }
 
 function getOrCreateContainer() {

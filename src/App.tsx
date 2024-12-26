@@ -15,6 +15,7 @@ import { LogIn } from './pages/logIn';
 import { SignUp } from './pages/signUp'; // Ensure correct import
 import { Contributors } from "./pages/Contributors"; // Make sure this import exists
 import { Waitlist } from "./pages/Waitlist";
+import { ChromeExtension } from "./pages/ChromeExtension";
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
           <Route path="/moderate-text" element={<ModerateText />} />
           <Route path="/results" element={<Results />} />
           <Route path="/contributors" element={<Contributors />} />
+          <Route path="/chrome-extension" element={<ChromeExtension />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

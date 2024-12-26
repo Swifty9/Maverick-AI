@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Clock, MessageCircle, ShoppingBag, Gamepad2, GraduationCap, Stethoscope, DollarSign, Quote } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { CheckCircle, Clock, MessageCircle, ShoppingBag, Gamepad2, GraduationCap, Stethoscope, DollarSign, Quote, Chrome } from "lucide-react";
+import { useNavigate, Link } from "react-router-dom";
 import { ScrollSection } from "../components/ScrollSection";
 import { Footer } from '../components/Footer';
 
@@ -88,7 +88,7 @@ export function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="pt-6"
+            className="pt-6 flex items-center justify-center gap-6"
           >
             <button 
               onClick={() => navigate("/moderate-text")}
@@ -96,6 +96,14 @@ export function Home() {
             >
               Try it now <span className="ml-2">→</span>
             </button>
+            
+            <Link
+              to="/chrome-extension"
+              className="inline-flex items-center gap-2 text-lg font-semibold text-purple-400 hover:text-purple-300 transition-colors"
+            >
+              <Chrome className="w-5 h-5" />
+              Chrome Extension
+            </Link>
           </motion.div>
         </div>
 
@@ -114,6 +122,103 @@ export function Home() {
             />
           </div>
         </motion.div>
+      </ScrollSection>
+
+      {/* Chrome Extension Section */}
+      <ScrollSection className="py-32 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-3xl p-12 md:p-16"
+          >
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Left Content */}
+              <div className="space-y-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2"
+                >
+                  <Chrome className="w-5 h-5 text-purple-400" />
+                  <span className="text-sm font-medium">Chrome Extension</span>
+                </motion.div>
+                
+                <h2 className="text-4xl md:text-5xl font-bold">
+                  Content Moderation
+                  <br />
+                  <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                    Right in Your Browser
+                  </span>
+                </h2>
+                
+                <p className="text-lg text-neutral-300">
+                  Moderate content in real-time with our powerful Chrome extension. 
+                  Get instant analysis, toxicity detection, and content filtering 
+                  directly within your browser.
+                </p>
+                
+                <ul className="space-y-3">
+                  {[
+                    'Real-time content analysis',
+                    'One-click moderation',
+                    'Customizable filters',
+                    'Instant notifications'
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-purple-400" />
+                      <span className="text-neutral-200">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <a
+                    href="https://chrome.google.com/webstore"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors"
+                  >
+                    <Chrome className="w-5 h-5" />
+                    Download Now for Chrome
+                  </a>
+                </motion.div>
+              </div>
+              
+              {/* Right Content - Extension Preview */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="relative z-10 bg-black/40 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-white/10">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Chrome className="w-6 h-6 text-purple-400" />
+                    <span className="font-medium">Maverick AI Extension</span>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="h-2 bg-white/10 rounded-full w-3/4"></div>
+                    <div className="h-2 bg-white/10 rounded-full w-1/2"></div>
+                    <div className="h-2 bg-white/10 rounded-full w-2/3"></div>
+                  </div>
+                </div>
+                
+                {/* Decorative Elements */}
+                <div className="absolute -z-10 inset-0 blur-3xl">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full transform rotate-12"></div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </ScrollSection>
 
       {/* Meet Our Founders */}

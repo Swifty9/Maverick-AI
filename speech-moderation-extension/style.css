@@ -99,3 +99,66 @@
 .maverick-chat-messages::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+.moderation-result {
+  margin-top: 8px;
+  border-left: 3px solid #4f46e5;
+  background: rgba(79, 70, 229, 0.1) !important;
+}
+
+.moderated-text {
+  font-weight: 500;
+}
+
+.moderation-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toxicity-level {
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.flag.low { border-left: 2px solid #22c55e; }
+.flag.medium { border-left: 2px solid #f59e0b; }
+.flag.high { border-left: 2px solid #ef4444; }
+
+.flag-type {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.flag-reason {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+}
+
+.flag-confidence {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85em;
+  padding-left: 4px;
+}
+
+.low-toxicity { color: #22c55e; }
+.medium-toxicity { color: #f59e0b; }
+.high-toxicity { color: #ef4444; }
+
+.toxicity-score {
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.6);
+}
